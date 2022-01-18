@@ -38,6 +38,8 @@ class CarouselControllerImpl implements CarouselController {
     }
   }
 
+  CarouselState? get state => _state;
+
   void _setModeController() =>
       _state!.changeMode(CarouselPageChangedReason.controller);
 
@@ -77,7 +79,8 @@ class CarouselControllerImpl implements CarouselController {
       _state!.onResetTimer();
     }
     _setModeController();
-    await _state!.pageController!.previousPage(duration: duration!, curve: curve!);
+    await _state!.pageController!
+        .previousPage(duration: duration!, curve: curve!);
     if (isNeedResetTimer) {
       _state!.onResumeTimer();
     }
